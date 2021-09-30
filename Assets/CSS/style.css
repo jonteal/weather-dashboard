@@ -1,0 +1,11 @@
+.featured-container {
+    display: flex;
+    flex-direction: row;
+    border: solid 5px red;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    border: solid 5px red;
+}
