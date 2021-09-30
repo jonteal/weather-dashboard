@@ -2,6 +2,12 @@
     display: flex;
     flex-direction: row;
     border: solid 5px red;
+    justify-content: space-between;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .main-container {
@@ -19,3 +25,4 @@ h1 {
 header {
     background-image: linear-gradient(to right, rgb(38, 77, 206), rgb(17, 30, 104));
 }
+
