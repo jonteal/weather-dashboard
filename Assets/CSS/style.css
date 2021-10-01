@@ -1,20 +1,35 @@
-.featured-container {
-    display: flex;
-    flex-direction: row;
-    border: solid 5px red;
-    justify-content: space-between;
-}
-
-.search-container {
-    display: flex;
-    flex-direction: column;
-}
-
 .main-container {
     display: flex;
     flex-direction: row;
     border: solid 5px red;
 }
+
+.search-container {
+    display: flex;
+    flex-direction: column;
+    border: solid 5px red;
+}
+
+.main-body-container {
+    display: flex;
+    flex-direction: column;
+    border: solid 5px red;
+    flex-basis: 100%;
+}
+
+.featured-container {
+    display: flex;
+    border: solid 5px red;
+}
+
+.five-day-container {
+    display: flex;
+    flex-direction: row;
+    border: solid 5px red;
+    justify-content: space-around;
+    flex-basis: 100%;
+}
+
 
 h1 {
     display: flex;
@@ -26,3 +41,17 @@ header {
     background-image: linear-gradient(to right, rgb(38, 77, 206), rgb(17, 30, 104));
 }
 
+.card-1,
+.card-2,
+.card-3,
+.card-4,
+.card-5 {
+    border: solid 2px black;
+}
+
+.search-header {
+    font-size: large;
+    font-weight: bolder;
+    font-style: normal;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
