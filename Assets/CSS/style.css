@@ -20,6 +20,7 @@
 .featured-weather {
     display: flex;
     border: solid 5px red;
+    flex-direction: column;
 }
 
 .five-day-container {
@@ -57,9 +58,17 @@ header {
 }
 
 .search-bar {
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 button {
-    border-radius: 10px;
+    border-radius: 15px;
+    margin-top: 0.1em;
+    cursor: pointer;
+}
+
+.uv-index-value {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
 }
