@@ -10,14 +10,14 @@
     border: solid 5px red;
 }
 
-.main-body-container {
+.main-element-container {
     display: flex;
     flex-direction: column;
     border: solid 5px red;
     flex-basis: 100%;
 }
 
-.featured-container {
+.featured-weather {
     display: flex;
     border: solid 5px red;
 }
@@ -54,4 +54,12 @@ header {
     font-weight: bolder;
     font-style: normal;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.search-bar {
+    border-radius: 10px;
+}
+
+button {
+    border-radius: 10px;
 }
