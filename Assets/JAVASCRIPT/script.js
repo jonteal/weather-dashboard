@@ -36,7 +36,13 @@ let weather = {
         document.getElementById("temp").innerText = temp + "° F";
         document.getElementById("humidity").innerText = "Humidity: " + humidity + "%";
         document.getElementById("wind").innerText = "Wind speed: " + speed + "mph";
-    }
+    },
+    search: function() {
+        this.fetchWeather(document.getElementById("search-bar").value);
+    },
 };
 
+document.getElementById("search-btn").addEventListener("click", function() {
+        weather.search();
+    })
 
