@@ -30,13 +30,12 @@ let weather = {
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
         console.log(name, icon, description, temp, humidity, speed);
-        document.querySelector("city").innerText = name;
-        document.querySelector(".icon").src = 
-            "http://openweathermap.org/img/wn/" + icon + "@2x.png";
-        document.querySelector(".description").innerText = description;
-        document.querySelector(".temp").innerText = temp + "° F";
-        document.querySelector(".humidity").innerText = "Humidity: " + humidity + "%";
-        document.querySelector(".wind").innerText = "Wind speed: " + speed + "mph";
+        document.getElementById("city").innerText = name;
+        document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+        document.getElementById("description").innerText = description;
+        document.getElementById("temp").innerText = temp + "° F";
+        document.getElementById("humidity").innerText = "Humidity: " + humidity + "%";
+        document.getElementById("wind").innerText = "Wind speed: " + speed + "mph";
     }
 };
 

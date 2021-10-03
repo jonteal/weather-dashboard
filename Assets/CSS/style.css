@@ -1,32 +1,32 @@
 .main-container {
     display: flex;
     flex-direction: row;
-    border: solid 5px red;
+    border: solid 1px black;
 }
 
 .search-container {
     display: flex;
     flex-direction: column;
-    border: solid 5px red;
+    border: solid 1px black;
 }
 
 .main-element-container {
     display: flex;
     flex-direction: column;
-    border: solid 5px red;
+    border: solid 1px black;
     flex-basis: 100%;
 }
 
 .featured-weather {
     display: flex;
-    border: solid 5px red;
+    border: solid 1px black;
     flex-direction: column;
 }
 
 .five-day-container {
     display: flex;
     flex-direction: row;
-    border: solid 5px red;
+    border: solid 1px black;
     justify-content: space-around;
     flex-basis: 100%;
 }
