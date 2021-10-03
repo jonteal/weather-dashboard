@@ -3,6 +3,11 @@
     flex-direction: row;
 }
 
+.header {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
 .search-container {
     display: flex;
     flex-direction: column;
@@ -23,7 +28,6 @@
 .five-day-container {
     display: flex;
     flex-direction: row;
-    /* border: solid 1px black; */
     justify-content: space-around;
     flex-basis: 100%;
     gap: 1rem;
@@ -149,10 +153,18 @@ li {
 .past-search-storage {
     border-top: solid 1px black;
     margin-top: 2rem;
+    /* display: flex; */
 }
 
 .search-container-parent {
     margin-right: 1rem;
     margin-left: 1rem;
+}
+
+.past-search-item {
+    background-color: rgb(172, 170, 170);
+    border-radius: 5px;
+    margin: 5px;
+    list-style: none;
 }
 
