@@ -72,3 +72,17 @@ button {
     color: white;
     border-radius: 5px;
 }
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+#description {
+    text-transform: capitalize;
+    margin-left: 5px;
+}
+
+.weather.loading {
+    visibility: hidden;
+}

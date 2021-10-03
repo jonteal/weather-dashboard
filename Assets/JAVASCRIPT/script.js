@@ -29,13 +29,13 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        console.log(name, icon, description, temp, humidity, speed);
         document.getElementById("city").innerText = name;
         document.getElementById("icon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
         document.getElementById("description").innerText = description;
         document.getElementById("temp").innerText = temp + "° F";
         document.getElementById("humidity").innerText = "Humidity: " + humidity + "%";
         document.getElementById("wind").innerText = "Wind speed: " + speed + "mph";
+        document.getElementById("weather").classList.remove("loading");
     },
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
@@ -46,3 +46,10 @@ document.getElementById("search-btn").addEventListener("click", function() {
         weather.search();
     })
 
+document.getElementById("search-bar").addEventListener("keyup", function(event) {
+    if (event.key == "Enter") {
+        weather.search();
+    }
+})
+
+weather.fetchWeather("Fayetteville");
