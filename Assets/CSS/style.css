@@ -33,7 +33,6 @@
     gap: 1rem;
 }
 
-
 h1 {
     display: flex;
     justify-content: center;
@@ -153,7 +152,6 @@ li {
 .past-search-storage {
     border-top: solid 1px black;
     margin-top: 2rem;
-    /* display: flex; */
 }
 
 .search-container-parent {

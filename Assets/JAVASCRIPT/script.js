@@ -9,6 +9,9 @@ https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={par
 // Variable for Search Button
 var searchBtn = document.getElementById("search-btn");
 
+// Date variables
+// var currentDate = moment().format('l');
+
 // Main function to call current weather
 let weather = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
@@ -36,8 +39,7 @@ let weather = {
         document.getElementById("description").innerText = description;
         document.getElementById("temp").innerText = temp + "° F";
         document.getElementById("humidity").innerText = "Humidity: " + humidity + "%";
-        document.getElementById("wind").innerText = "Wind speed: " + speed + "mph";
-        document.getElementById("weather").classList.remove("loading");
+        document.getElementById("wind").innerText = "Wind speed: " + speed + " MPH";
     },
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
@@ -58,3 +60,38 @@ document.getElementById("search-bar").addEventListener("keyup", function(event) 
 
 // Function to populate Fayetteville weather when page loads initially
 weather.fetchWeather("Fayetteville");
+
+// Functiont to call 5 Day Forecast
+let futureWeather = {
+    apiKey: "6a495eb658d2f860658cf774331a385d",
+    fetchFutureWeather: function(city) {
+        fetch(
+            "https://api.openweathermap.org/data/2.5/forecast?q="
+            + city
+            + "&units=imperial&appid="
+            + "6a495eb658d2f860658cf774331a385d"
+        )
+            .then((response) => response.json())
+            .then((data) => this.displayFutureWeather(data));
+    },
+
+    // Display Future Weather Function
+    displayFutureWeather: function(data) {
+        const { date } = data.dt_txt;
+        const { icon } = data.list[0].weather[0].icon;
+        const { futureTemp0, humidity } = data.list[0].main;
+        const { speed } = data.list.wind;
+
+
+        document.getElementById("cardOneHeader").innerText = date;
+        document.getElementById("cardOneIcon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+        document.getElementById("cardOneTemp").innerText = futureTemp0 + "° F";
+        document.getElementById("cardOneWindSpeed").innerText = "Wind speed: " + speed + " MPH";
+        document.getElementById("cardOneHumidity").innerText = "Humidity: " + humidity + "%";
+
+    },
+    search: function() {
+        this.fetchFutureWeather(document.getElementById("search-bar").value);
+    },
+};
+
