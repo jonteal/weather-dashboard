@@ -1,19 +1,16 @@
 .main-container {
     display: flex;
     flex-direction: row;
-    border: solid 1px black;
 }
 
 .search-container {
     display: flex;
     flex-direction: column;
-    border: solid 1px black;
 }
 
 .main-element-container {
     display: flex;
     flex-direction: column;
-    border: solid 1px black;
     flex-basis: 100%;
 }
 
@@ -40,7 +37,7 @@ h1 {
 }
 
 header {
-    background-image: linear-gradient(to right, rgb(38, 77, 206), rgb(17, 30, 104));
+    background-image: linear-gradient(to right, rgb(52, 120, 237), rgb(17, 30, 104));
 }
 
 .card-1,
@@ -57,25 +54,33 @@ header {
     font-size: large;
     font-weight: bolder;
     font-style: normal;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
 }
 
 #search-bar {
     border-radius: 15px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 button {
     border-radius: 15px;
-    margin-top: 0.1em;
+    margin-top: 0.5em;
     cursor: pointer;
     background-color: rgb(52, 120, 237);
     color: white;
 }
 
 .uv-index-value {
-    background-color: green;
+    background-color: rgb(20, 121, 20);
     color: white;
     border-radius: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 5px;
 }
 
 .flex {
@@ -89,9 +94,16 @@ button {
 #uv-index,
 #temp {
     text-transform: capitalize;
-    margin-left: 5px;
-    margin-top: 1px;
-    margin-bottom: 1px;
+    margin: 0.5rem;
+}
+
+#uv-index {
+    margin-bottom: 1rem;
+}
+
+#city {
+    font-weight: bolder;
+    font-variant: small-caps;
 }
 
 #temp {
@@ -130,5 +142,17 @@ li {
     justify-content: flex-start;
 }
 
+* {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
+.past-search-storage {
+    border-top: solid 1px black;
+    margin-top: 2rem;
+}
+
+.search-container-parent {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
 

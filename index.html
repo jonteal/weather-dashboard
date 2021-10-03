@@ -15,11 +15,25 @@
     </header>
 
     <div class="main-container">
-        <aside>
+        <aside class="search-container-parent">
             <div class="search-container">
                 <span class="search-header">Search for a City:</span> 
                 <input type="text" id="search-bar" placeholder="Search">
                 <button class="search-button" id="search-btn">Search</button>
+            </div>
+            <div class="past-search-storage">
+                <ul>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                    <li>City</li>
+                </ul>
             </div>
         </aside>
 
@@ -31,7 +45,7 @@
                     <div id="description">Sunny</div>
                     <img src="http://openweathermap.org/img/wn/04n.png" alt="" id="icon" />
                 </div>
-                <div id="wind">Wind Speed: 7 mph</div>
+                <div id="wind" class="flex">Wind Speed: 7 MPH</div>
                 <div id="humidity">Humidity: 70%</div>
                 <div id="uv-index">UV Index:<span class="uv-index-value">0.47</span></div>
             </div>
