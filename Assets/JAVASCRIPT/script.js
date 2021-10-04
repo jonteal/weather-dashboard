@@ -3,11 +3,9 @@
 https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
 
-// 5 day weather forecast API
-// api.openweathermap.org/data/2.5/forecast/daily?q=city&cnt=5&appid=APIKey;
-
 // Variable for Search Button
 var searchBtn = document.getElementById("search-btn");
+var city = document.getElementById("search-bar");
 
 // Date variables
 // var currentDate = moment().format('l');
@@ -59,7 +57,7 @@ document.getElementById("search-bar").addEventListener("keyup", function(event) 
 })
 
 // Function to populate Fayetteville weather when page loads initially
-weather.fetchWeather("Fayetteville");
+// weather.fetchWeather("Fayetteville");
 
 // Functiont to call 5 Day Forecast
 let futureWeather = {
@@ -77,15 +75,16 @@ let futureWeather = {
 
     // Display Future Weather Function
     displayFutureWeather: function(data) {
-        const { date } = data.dt_txt;
+        // const { date } = data.list.dt_txt;
         const { icon } = data.list[0].weather[0].icon;
-        const { futureTemp0, humidity } = data.list[0].main;
-        const { speed } = data.list.wind;
+        const { temp } = data.list[0].main.temp;
+        const { speed } = data.list[0].wind.speed;
+        const { humidity} = data.list[0].main.humidity;
 
 
-        document.getElementById("cardOneHeader").innerText = date;
+        // document.getElementById("cardOneHeader").innerText = date;
         document.getElementById("cardOneIcon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
-        document.getElementById("cardOneTemp").innerText = futureTemp0 + "° F";
+        document.getElementById("cardOneTemp").innerText = temp + "° F";
         document.getElementById("cardOneWindSpeed").innerText = "Wind speed: " + speed + " MPH";
         document.getElementById("cardOneHumidity").innerText = "Humidity: " + humidity + "%";
 
@@ -95,3 +94,13 @@ let futureWeather = {
     },
 };
 
+document.getElementById("search-btn").addEventListener("click", function() {
+    futureWeather.search();
+})
+
+// Event Listener for Search Bar if user hits 'Enter' key
+document.getElementById("search-bar").addEventListener("keyup", function(event) {
+if (event.key == "Enter") {
+    futureWeather.search();
+}
+})
