@@ -1,22 +1,49 @@
+/* Universal Settings */
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container for Entire Body of Elements */
+.entire-body-container {
+    display: flex;
+    flex-basis: 100%;
+    flex-direction: column;
+}
+
+/* Header Styling */
+header {
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    background-image: linear-gradient(to right, rgb(52, 120, 237), rgb(17, 30, 104));
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+
 .main-container {
     display: flex;
     flex-direction: row;
 }
 
-.header {
-    padding: 10px;
-    margin-bottom: 10px;
+.main-weather-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
 }
 
 .search-container {
     display: flex;
     flex-direction: column;
-}
-
-.main-element-container {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
 }
 
 .featured-weather {
@@ -33,16 +60,7 @@
     gap: 1rem;
 }
 
-h1 {
-    display: flex;
-    justify-content: center;
-    color: white;
-}
-
-header {
-    background-image: linear-gradient(to right, rgb(52, 120, 237), rgb(17, 30, 104));
-}
-
+/* 5-Day Forecast Cards */
 .card-1,
 .card-2,
 .card-3,
@@ -145,10 +163,6 @@ li {
     justify-content: flex-start;
 }
 
-* {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 .past-search-storage {
     border-top: solid 1px black;
     margin-top: 2rem;
@@ -165,4 +179,42 @@ li {
     margin: 5px;
     list-style: none;
 }
+
+@media screen and (max-width: 769px) {
+    .five-day-container { 
+        display: inline-block;
+        flex-direction: column;
+        gap: 1rem;
+    } 
+    .past-search-storage {
+        display: none;
+    }
+    .main-container,
+    .entire-body-container {
+        display: flex;
+        flex-direction: column;
+    }
+    button {
+        margin-bottom: 1rem;
+    }
+};
+
+@media screen and (max-width: 900px) {
+    .five-day-container { 
+        display: inline-block;
+        flex-direction: column;
+        gap: 1rem;
+    } 
+    .past-search-storage {
+        display: none;
+    }
+    .main-container,
+    .entire-body-container {
+        display: flex;
+        flex-direction: column;
+    }
+    button {
+        margin-bottom: 1rem;
+    }
+};
 

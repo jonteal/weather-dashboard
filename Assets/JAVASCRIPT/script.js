@@ -59,7 +59,6 @@ let weather = {
 let futureWeather = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeather: function(city) {
-        city.preventDefault();
         fetch(
             "https://api.openweathermap.org/data/2.5/forecast?q="
             + city
