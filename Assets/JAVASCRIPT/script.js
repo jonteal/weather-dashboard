@@ -7,14 +7,6 @@ https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={par
 var searchBtn = document.getElementById("search-btn");
 var city = document.getElementById("search-bar");
 
-// Date variables - Note that Numbers Correlate to Index Position
-// var currentDate = moment().format('l');
-// var futureDay0 = moment().add(1, 'days').format('l');
-// var futureDay1 = moment().add(2, 'days').format('l');
-// var futureDay2 = moment().add(3, 'days').format('l');
-// var futureDay3 = moment().add(4, 'days').format('l');
-// var futureDay4 = moment().add(5, 'days').format('l');
-
 
 // Main function to call current weather
 let weather = {
@@ -27,7 +19,9 @@ let weather = {
             + this.apiKey
         )
             .then((response) => response.json())
-            .then((data) => this.displayWeather(data));
+            .then((data) => {
+                this.displayWeather(data);
+            })
     },
 
     // Inner function that displays the weather based on selected data
@@ -53,7 +47,7 @@ let weather = {
 
 
 // Function to populate Fayetteville weather when page loads initially
-// weather.fetchWeather("Fayetteville");
+weather.fetchWeather("Fayetteville");
 
 // Functiont to call 5 Day Forecast
 let futureWeather = {
@@ -66,20 +60,24 @@ let futureWeather = {
             + "6a495eb658d2f860658cf774331a385d"
         )
             .then((response) => response.json())
-            .then((data) => this.displayFutureWeather(data));
+            .then((data) => {
+                this.displayFutureWeather(data);
+            })
+            
     },
     
 
     // Display Future Weather Function
     displayFutureWeather: function(data) {
-        // const { date } = data.list.dt_txt;
+        console.log(data);
+        const { date } = data.list[0].dt;
         const { icon } = data.list[0].weather[0].icon;
-        const { temp } = data.list[0].main.temp;
-        const { speed } = data.list[0].wind.speed;
-        const { humidity} = data.list[0].main.humidity;
+        const { temp } = data.list[0].main;
+        const { speed } = data.list[0].wind;
+        const { humidity} = data.list[0].main;
 
 
-        // document.getElementById("cardOneHeader").innerText = date;
+        document.getElementById("cardOneHeader").innerText = date;
         document.getElementById("cardOneIcon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
         document.getElementById("cardOneTemp").innerText = temp + "° F";
         document.getElementById("cardOneWindSpeed").innerText = "Wind speed: " + speed + " MPH";
@@ -95,7 +93,6 @@ let futureWeather = {
 // Event Listener for Search Button upon Click
 document.getElementById("search-btn").addEventListener("click", function() {
     weather.search();
-    futureWeather.search();
 })
 
 // Event Listener for Search Bar if user hits 'Enter' key
