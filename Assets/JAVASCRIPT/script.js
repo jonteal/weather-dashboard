@@ -2,6 +2,10 @@
 
 https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
 
+// API Variables
+var currentApiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
+var unitsOfMeasure = "&units=imperial&appid=";
+var futureApiURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 
 // Variable for Search Button
 var searchBtn = document.getElementById("search-btn");
@@ -16,6 +20,11 @@ var tempNow = document.getElementById("temp");
 var humidityNow = document.getElementById("humidity");
 var windspeedNow = document.getElementById("wind");
 
+var futureDateOne = document.getElementById("cardOneHeader");
+var futureIconOne = document.getElementById("cardOneIcon");
+var futureTempOne = document.getElementById("cardOneTemp");
+var futureWindSpeedOne = document.getElementById("cardOneWindSpeed");
+var futureHumidityOne = document.getElementById("cardOneHumidity");
 
 
 // Main function to call current weather
@@ -23,9 +32,9 @@ let weather = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchWeather: function(city) {
         fetch(
-            "https://api.openweathermap.org/data/2.5/weather?q=" 
+            currentApiURL 
             + city 
-            + "&units=imperial&appid="
+            + unitsOfMeasure
             + this.apiKey
         )
             .then((response) => response.json())
@@ -64,9 +73,9 @@ let futureWeather = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeather: function(city) {
         fetch(
-            "https://api.openweathermap.org/data/2.5/forecast?q="
+            futureApiURL
             + city
-            + "&units=imperial&appid="
+            + unitsOfMeasure
             + this.apiKey
         )
             .then((response) => response.json())
@@ -86,11 +95,11 @@ let futureWeather = {
         const { humidity} = data.list[0].main;
 
 
-        document.getElementById("cardOneHeader").innerText = dt_txt;
-        document.getElementById("cardOneIcon").src = iconUrl + icon + ".png";
-        document.getElementById("cardOneTemp").innerText = temp + "° F";
-        document.getElementById("cardOneWindSpeed").innerText = "Wind speed: " + speed + " MPH";
-        document.getElementById("cardOneHumidity").innerText = "Humidity: " + humidity + "%";
+        futureDateOne.innerText = dt_txt;
+        futureIconOne.src = iconUrl + icon + ".png";
+        futureTempOne.innerText = temp + "° F";
+        futureWindSpeedOne.innerText = "Wind speed: " + speed + " MPH";
+        futureHumidityOne.innerText = "Humidity: " + humidity + "%";
 
     },
     search: function() {
@@ -103,10 +112,10 @@ let futureWeather1 = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeather1: function(city) {
         fetch(
-            "https://api.openweathermap.org/data/2.5/forecast?q="
+            futureApiURL
             + city
-            + "&units=imperial&appid="
-            + "6a495eb658d2f860658cf774331a385d"
+            + unitsOfMeasure
+            + this.apiKey
         )
             .then((response) => response.json())
             .then((data) => {
