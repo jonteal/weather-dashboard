@@ -49,7 +49,7 @@ let weather = {
 // Function to populate Fayetteville weather when page loads initially
 weather.fetchWeather("Fayetteville");
 
-// Functiont to call 5 Day Forecast
+// Function to call 5 Day Forecast
 let futureWeather = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeather: function(city) {
@@ -69,15 +69,14 @@ let futureWeather = {
 
     // Display Future Weather Function
     displayFutureWeather: function(data) {
-        console.log(data);
-        const { date } = data.list[0].dt;
+        const { dt_txt } = data.list[0];
         const { icon } = data.list[0].weather[0].icon;
         const { temp } = data.list[0].main;
         const { speed } = data.list[0].wind;
         const { humidity} = data.list[0].main;
 
 
-        document.getElementById("cardOneHeader").innerText = date;
+        document.getElementById("cardOneHeader").innerText = dt_txt;
         document.getElementById("cardOneIcon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
         document.getElementById("cardOneTemp").innerText = temp + "° F";
         document.getElementById("cardOneWindSpeed").innerText = "Wind speed: " + speed + " MPH";
@@ -89,6 +88,52 @@ let futureWeather = {
     },
     
 };
+
+let futureWeather1 = {
+    apiKey: "6a495eb658d2f860658cf774331a385d",
+    fetchFutureWeather1: function(city) {
+        fetch(
+            "https://api.openweathermap.org/data/2.5/forecast?q="
+            + city
+            + "&units=imperial&appid="
+            + "6a495eb658d2f860658cf774331a385d"
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.displayFutureWeather1(data);
+            })
+            
+    },
+    
+
+    // Display Future Weather Function
+    displayFutureWeather1: function(data) {
+        const { dt_txt } = data.list[1];
+        const { icon } = data.list[1].weather[1].icon;
+        const { temp } = data.list[1].main;
+        const { speed } = data.list[1].wind;
+        const { humidity} = data.list[1].main;
+
+
+        document.getElementById("cardTwoHeader").innerText = dt_txt;
+        document.getElementById("cardTwoIcon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
+        document.getElementById("cardTwoTemp").innerText = temp + "° F";
+        document.getElementById("cardTwoWindSpeed").innerText = "Wind speed: " + speed + " MPH";
+        document.getElementById("cardTwoHumidity").innerText = "Humidity: " + humidity + "%";
+
+
+    },
+    search: function() {
+        this.fetchFutureWeather1(document.getElementById("search-bar").value);
+    },
+    
+};
+
+
+
+
+
+
 
 // Event Listener for Search Button upon Click
 document.getElementById("search-btn").addEventListener("click", function() {
