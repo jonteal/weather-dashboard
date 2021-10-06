@@ -6,7 +6,7 @@ https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={par
 var currentApiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var unitsOfMeasure = "&units=imperial&appid=";
 var futureApiURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
-var uvIndex = document.getElementById("uv-index");
+var uvIndex = document.getElementById("uv-index-value");
 
 // Variable for Search Button
 var searchBtn = document.getElementById("search-btn");
@@ -78,6 +78,20 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
+        // uvUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,daily&appid=" + this.apiKey;
+        //     fetch(uvUrl).then(function (response) {
+        //     response.json().then(function (data) {
+        //       //Color change depending on UV index
+        //         if (data.current.uvi < 2) {
+        //         uvIndex.setAttribute("class", "col-2 green");
+        //         } else if (data.current.uvi > 2 && data.current.uvi < 6) {
+        //         uvIndex.setAttribute("class", "col-2 yellow");
+        //         } else {
+        //         uvIndex.setAttribute("class", "col-2 red");
+        //         }
+        //         uvIndex.textContent = "UVI: ${data.current.uvi}";
+        //     });
+        //     });
 
         // Instructions to populate specific elements with relevant data
         cityNow.innerText = name;
@@ -96,6 +110,8 @@ let weather = {
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
     },
+
+    
 
     // // UV Index Fetch Function
     // fetchUVIndex: function(data) {
@@ -206,11 +222,11 @@ let futureWeatherTwo = {
     },    
     // Display Future Weather Function
     displayFutureWeatherTwo: function(data) {
-        const { dt_txt } = data.list[1];
-        const { icon } = data.list[1].weather[0];
-        const { temp } = data.list[1].main;
-        const { speed } = data.list[1].wind;
-        const { humidity } = data.list[1].main;
+        const { dt_txt } = data.list[8];
+        const { icon } = data.list[8].weather[0];
+        const { temp } = data.list[8].main;
+        const { speed } = data.list[8].wind;
+        const { humidity } = data.list[8].main;
 
         futureDateTwo.innerText = dt_txt;
         futureIconTwo.src = iconUrl + icon + ".png";
@@ -240,11 +256,11 @@ let futureWeatherThree = {
     },    
     // Display Future Weather Function
     displayFutureWeatherThree: function(data) {
-        const { dt_txt } = data.list[2];
-        const { icon } = data.list[2].weather[0];
-        const { temp } = data.list[2].main;
-        const { speed } = data.list[2].wind;
-        const { humidity } = data.list[2].main;
+        const { dt_txt } = data.list[16];
+        const { icon } = data.list[16].weather[0];
+        const { temp } = data.list[16].main;
+        const { speed } = data.list[16].wind;
+        const { humidity } = data.list[16].main;
 
         futureDateThree.innerText = dt_txt;
         futureIconThree.src = iconUrl + icon + ".png";
@@ -274,11 +290,11 @@ let futureWeatherFour = {
     },    
     // Display Future Weather Function
     displayFutureWeatherFour: function(data) {
-        const { dt_txt } = data.list[3];
-        const { icon } = data.list[3].weather[0];
-        const { temp } = data.list[3].main;
-        const { speed } = data.list[3].wind;
-        const { humidity } = data.list[3].main;
+        const { dt_txt } = data.list[24];
+        const { icon } = data.list[24].weather[0];
+        const { temp } = data.list[24].main;
+        const { speed } = data.list[24].wind;
+        const { humidity } = data.list[24].main;
 
         futureDateFour.innerText = dt_txt;
         futureIconFour.src = iconUrl + icon + ".png";
@@ -308,11 +324,11 @@ let futureWeatherFive = {
     },    
     // Display Future Weather Function
     displayFutureWeatherFive: function(data) {
-        const { dt_txt } = data.list[4];
-        const { icon } = data.list[4].weather[0];
-        const { temp } = data.list[4].main;
-        const { speed } = data.list[4].wind;
-        const { humidity } = data.list[4].main;
+        const { dt_txt } = data.list[32];
+        const { icon } = data.list[32].weather[0];
+        const { temp } = data.list[32].main;
+        const { speed } = data.list[32].wind;
+        const { humidity } = data.list[32].main;
 
         futureDateFive.innerText = dt_txt;
         futureIconFive.src = iconUrl + icon + ".png";
