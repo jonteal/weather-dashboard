@@ -6,6 +6,7 @@ https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={par
 var currentApiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var unitsOfMeasure = "&units=imperial&appid=";
 var futureApiURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
+var uvIndex = document.getElementById("uv-index");
 
 // Variable for Search Button
 var searchBtn = document.getElementById("search-btn");
@@ -95,7 +96,53 @@ let weather = {
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
     },
-};
+
+    // // UV Index Fetch Function
+    // fetchUVIndex: function(data) {
+    //     fetch(
+    //         "https://api.openweathermap.org/data/2.5/uvi/forecast?lat="
+    //         + lat 
+    //         + "&lon="
+    //         + lon
+    //         + this.apiKey
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => {
+    //             this.displayWeather(data);
+    //         })
+    // },
+
+    // displayUVIndex: function(data) {
+    //     const { uvi } = data.current;
+    
+    //     uvIndex.innerText = uvi;
+
+
+    // function fetchUVIndex() {
+    //     var lat = data.coord.lat;
+    //     var lon = data.coord.lon;
+        
+    
+    //     fetch(uviIndexURL)
+    //     .then(function (response) {
+    //     return response.json();
+    //     })
+    //     .then(function (data) {
+    
+    //     if (data[0].value < 3){
+    //         $('#today-uvi').css('background-color', 'green');
+    //     } else if (data[0].value >= 3 && data[0].value < 6) {
+    //         $('#today-uvi').css('background-color', 'yellow');
+    //     } else {
+    //         $('#today-uvi').css('background-color', 'red');
+    //     };
+    //     search: function() {
+    //         this.fetchWeather(document.getElementById("search-bar").value);
+
+    // })
+}
+    
+
 
 // Function to populate Fayetteville weather when page loads initially
 // weather.fetchWeather("Fayetteville");
@@ -244,7 +291,7 @@ let futureWeatherFour = {
     },    
 };
 
-
+// Day 5
 let futureWeatherFive = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeatherFive: function(city) {
@@ -277,7 +324,6 @@ let futureWeatherFive = {
         this.fetchFutureWeatherFive(city.value);
     },    
 };
-
 
 
 // Event Listener for Search Button upon Click
