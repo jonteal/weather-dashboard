@@ -149,9 +149,6 @@ let futureWeatherTwo = {
 };
 
 
-
-
-
 // Event Listener for Search Button upon Click
 searchBtn.addEventListener("click", function() {
     weather.search();
