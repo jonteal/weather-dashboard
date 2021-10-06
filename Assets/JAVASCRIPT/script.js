@@ -72,26 +72,15 @@ let weather = {
             })
     },
 
+
+
     // Inner function that displays the weather based on selected data
     displayWeather: function(data) {
         const { name } = data;
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
-        // uvUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=hourly,daily&appid=" + this.apiKey;
-        //     fetch(uvUrl).then(function (response) {
-        //     response.json().then(function (data) {
-        //       //Color change depending on UV index
-        //         if (data.current.uvi < 2) {
-        //         uvIndex.setAttribute("class", "col-2 green");
-        //         } else if (data.current.uvi > 2 && data.current.uvi < 6) {
-        //         uvIndex.setAttribute("class", "col-2 yellow");
-        //         } else {
-        //         uvIndex.setAttribute("class", "col-2 red");
-        //         }
-        //         uvIndex.textContent = "UVI: ${data.current.uvi}";
-        //     });
-        //     });
+
 
         // Instructions to populate specific elements with relevant data
         cityNow.innerText = name;
@@ -101,68 +90,63 @@ let weather = {
         humidityNow.innerText = "Humidity: " + humidity + "%";
         windspeedNow.innerText = "Wind speed: " + speed + " MPH";
 
+        
         futureWeatherOne.search()
         futureWeatherTwo.search()
         futureWeatherThree.search()
         futureWeatherFour.search()
         futureWeatherFive.search()
+        uvI.search()
     },
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
+    },    
+}
+
+// UV Index Fetch Function
+
+let uvI = {
+    apiKey: "6a495eb658d2f860658cf774331a385d",
+
+    fetchUVI: function() {
+        fetch(
+            "https://api.openweathermap.org/data/2.5/uvi/forecast?lat="
+            + lat 
+            + "&lon="
+            + lon
+            + this.apiKey
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.displayWeather(data);
+            })
     },
 
-    
+    displayUVI: function(data) {
+        const { uvi } = data.current;
 
-    // // UV Index Fetch Function
-    // fetchUVIndex: function(data) {
-    //     fetch(
-    //         "https://api.openweathermap.org/data/2.5/uvi/forecast?lat="
-    //         + lat 
-    //         + "&lon="
-    //         + lon
-    //         + this.apiKey
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => {
-    //             this.displayWeather(data);
-    //         })
-    // },
+        uvIndex.innerText = uvi;
+    },
 
-    // displayUVIndex: function(data) {
-    //     const { uvi } = data.current;
-    
-    //     uvIndex.innerText = uvi;
+//            //Color change depending on UV index
+//         if (data.current.uvi < 2) {
+//         uvIndex.setAttribute("class", "col-2 green");
+//         } else if (data.current.uvi > 2 && data.current.uvi < 6) {
+//         uvIndex.setAttribute("class", "col-2 yellow");
+//         } else {
+//         uvIndex.setAttribute("class", "col-2 red");
+//         }
+//         uvIndex.textContent = "UVI: ${data.current.uvi}";
+//     });
+// });
 
-
-    // function fetchUVIndex() {
-    //     var lat = data.coord.lat;
-    //     var lon = data.coord.lon;
-        
-    
-    //     fetch(uviIndexURL)
-    //     .then(function (response) {
-    //     return response.json();
-    //     })
-    //     .then(function (data) {
-    
-    //     if (data[0].value < 3){
-    //         $('#today-uvi').css('background-color', 'green');
-    //     } else if (data[0].value >= 3 && data[0].value < 6) {
-    //         $('#today-uvi').css('background-color', 'yellow');
-    //     } else {
-    //         $('#today-uvi').css('background-color', 'red');
-    //     };
-    //     search: function() {
-    //         this.fetchWeather(document.getElementById("search-bar").value);
-
-    // })
+    search: function() {
+        this.fetchWeather(document.getElementById("search-bar").value);
+    },
 }
-    
-
 
 // Function to populate Fayetteville weather when page loads initially
-// weather.fetchWeather("Fayetteville");
-
+weather.fetchWeather("Fayetteville");
 
 
 // Functions to call 5 Day Forecast
