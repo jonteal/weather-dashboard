@@ -20,11 +20,19 @@ var tempNow = document.getElementById("temp");
 var humidityNow = document.getElementById("humidity");
 var windspeedNow = document.getElementById("wind");
 
+// Variables for 5 Day Forecast - Day 1
 var futureDateOne = document.getElementById("cardOneHeader");
 var futureIconOne = document.getElementById("cardOneIcon");
 var futureTempOne = document.getElementById("cardOneTemp");
 var futureWindSpeedOne = document.getElementById("cardOneWindSpeed");
 var futureHumidityOne = document.getElementById("cardOneHumidity");
+
+// Variables for 5 Day Forecast - Day 2
+var futureDateTwo = document.getElementById("cardTwoHeader");
+var futureIconTwo = document.getElementById("cardTwoIcon");
+var futureTempTwo = document.getElementById("cardTwoTemp");
+var futureWindSpeedTwo = document.getElementById("cardTwoWindSpeed");
+var futureHumidityTwo = document.getElementById("cardTwoHumidity");
 
 
 // Main function to call current weather
@@ -69,9 +77,9 @@ weather.fetchWeather("Fayetteville");
 
 
 // Function to call 5 Day Forecast
-let futureWeather = {
+let futureWeatherOne = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
-    fetchFutureWeather: function(city) {
+    fetchFutureWeatherOne: function(city) {
         fetch(
             futureApiURL
             + city
@@ -80,19 +88,17 @@ let futureWeather = {
         )
             .then((response) => response.json())
             .then((data) => {
-                this.displayFutureWeather(data);
-            })
-            
+                this.displayFutureWeatherOne(data);
+            })           
     },
     
-
     // Display Future Weather Function
-    displayFutureWeather: function(data) {
+    displayFutureWeatherOne: function(data) {
         const { dt_txt } = data.list[0];
         const { icon } = data.list[0].weather[0];
         const { temp } = data.list[0].main;
         const { speed } = data.list[0].wind;
-        const { humidity} = data.list[0].main;
+        const { humidity } = data.list[0].main;
 
 
         futureDateOne.innerText = dt_txt;
@@ -103,14 +109,15 @@ let futureWeather = {
 
     },
     search: function() {
-        this.fetchFutureWeather(document.getElementById("search-bar").value);
-    },
-    
+        this.fetchFutureWeatherOne(city.value);
+    },    
 };
 
-let futureWeather1 = {
+
+
+let futureWeatherTwo = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
-    fetchFutureWeather1: function(city) {
+    fetchFutureWeatherTwo: function(city) {
         fetch(
             futureApiURL
             + city
@@ -119,50 +126,44 @@ let futureWeather1 = {
         )
             .then((response) => response.json())
             .then((data) => {
-                this.displayFutureWeather1(data);
-            })
-            
-    },
-    
-
+                this.displayFutureWeatherTwo(data);
+            })           
+    },    
     // Display Future Weather Function
-    displayFutureWeather1: function(data) {
+    displayFutureWeatherTwo: function(data) {
         const { dt_txt } = data.list[1];
-        const { icon } = data.list[1].weather[1].icon;
+        const { icon } = data.list[1].weather[1];
         const { temp } = data.list[1].main;
         const { speed } = data.list[1].wind;
-        const { humidity} = data.list[1].main;
+        const { humidity } = data.list[1].main;
 
-
-        document.getElementById("cardTwoHeader").innerText = dt_txt;
-        document.getElementById("cardTwoIcon").src = "http://openweathermap.org/img/wn/" + icon + ".png";
-        document.getElementById("cardTwoTemp").innerText = temp + "° F";
-        document.getElementById("cardTwoWindSpeed").innerText = "Wind speed: " + speed + " MPH";
-        document.getElementById("cardTwoHumidity").innerText = "Humidity: " + humidity + "%";
-
-
+        futureDateTwo.innerText = dt_txt;
+        futureIconTwo.src = iconUrl + icon + ".png";
+        futureTempTwo.innerText = temp + "° F";
+        futureWindSpeedTwo.innerText = "Wind speed: " + speed + " MPH";
+        futureHumidityTwo.innerText = "Humidity: " + humidity + "%";
     },
     search: function() {
-        this.fetchFutureWeather1(document.getElementById("search-bar").value);
-    },
-    
+        this.fetchFutureWeatherTwo(city.value);
+    },    
 };
 
 
 
 
 
-
-
 // Event Listener for Search Button upon Click
-document.getElementById("search-btn").addEventListener("click", function() {
+searchBtn.addEventListener("click", function() {
     weather.search();
+    futureWeatherOne.search();
+    futureWeatherTwo.search();
 })
 
 // Event Listener for Search Bar if user hits 'Enter' key
-document.getElementById("search-bar").addEventListener("keyup", function(event) {
+city.addEventListener("keyup", function(event) {
 if (event.key == "Enter") {
     weather.search();
-    futureWeather.search();
+    futureWeatherOne.search();
+    futureWeatherTwo.search();
 }
 })
