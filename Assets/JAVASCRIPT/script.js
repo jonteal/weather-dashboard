@@ -34,6 +34,26 @@ var futureTempTwo = document.getElementById("cardTwoTemp");
 var futureWindSpeedTwo = document.getElementById("cardTwoWindSpeed");
 var futureHumidityTwo = document.getElementById("cardTwoHumidity");
 
+// Variables for 5 Day Forecast - Day 3
+var futureDateThree = document.getElementById("cardThreeHeader");
+var futureIconThree = document.getElementById("cardThreeIcon");
+var futureTempThree = document.getElementById("cardThreeTemp");
+var futureWindSpeedThree = document.getElementById("cardThreeWindSpeed");
+var futureHumidityThree = document.getElementById("cardThreeHumidity");
+
+// Variables for 5 Day Forecast - Day 4
+var futureDateFour = document.getElementById("cardFourHeader");
+var futureIconFour = document.getElementById("cardFourIcon");
+var futureTempFour = document.getElementById("cardFourTemp");
+var futureWindSpeedFour = document.getElementById("cardFourWindSpeed");
+var futureHumidityFour = document.getElementById("cardFourHumidity");
+
+// Variable for 5 Day Forecast - Day 5
+var futureDateFive = document.getElementById("cardFiveHeader");
+var futureIconFive = document.getElementById("cardFiveIcon");
+var futureTempFive = document.getElementById("cardFiveTemp");
+var futureWindSpeedFive = document.getElementById("cardFiveWindSpeed");
+var futureHumidityFive = document.getElementById("cardFiveHumidity");
 
 // Main function to call current weather
 let weather = {
@@ -65,6 +85,12 @@ let weather = {
         tempNow.innerText = temp + "° F";
         humidityNow.innerText = "Humidity: " + humidity + "%";
         windspeedNow.innerText = "Wind speed: " + speed + " MPH";
+
+        futureWeatherOne.search()
+        futureWeatherTwo.search()
+        futureWeatherThree.search()
+        futureWeatherFour.search()
+        futureWeatherFive.search()
     },
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
@@ -72,11 +98,13 @@ let weather = {
 };
 
 // Function to populate Fayetteville weather when page loads initially
-weather.fetchWeather("Fayetteville");
+// weather.fetchWeather("Fayetteville");
 
 
 
-// Function to call 5 Day Forecast
+// Functions to call 5 Day Forecast
+
+// Day 1
 let futureWeatherOne = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeatherOne: function(city) {
@@ -107,14 +135,14 @@ let futureWeatherOne = {
         futureWindSpeedOne.innerText = "Wind speed: " + speed + " MPH";
         futureHumidityOne.innerText = "Humidity: " + humidity + "%";
 
+
     },
     search: function() {
         this.fetchFutureWeatherOne(city.value);
     },    
 };
 
-
-
+// Day 2
 let futureWeatherTwo = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
     fetchFutureWeatherTwo: function(city) {
@@ -132,7 +160,7 @@ let futureWeatherTwo = {
     // Display Future Weather Function
     displayFutureWeatherTwo: function(data) {
         const { dt_txt } = data.list[1];
-        const { icon } = data.list[1].weather[1];
+        const { icon } = data.list[1].weather[0];
         const { temp } = data.list[1].main;
         const { speed } = data.list[1].wind;
         const { humidity } = data.list[1].main;
@@ -148,19 +176,118 @@ let futureWeatherTwo = {
     },    
 };
 
+// Day 3
+let futureWeatherThree = {
+    apiKey: "6a495eb658d2f860658cf774331a385d",
+    fetchFutureWeatherThree: function(city) {
+        fetch(
+            futureApiURL
+            + city
+            + unitsOfMeasure
+            + this.apiKey
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.displayFutureWeatherThree(data);
+            })           
+    },    
+    // Display Future Weather Function
+    displayFutureWeatherThree: function(data) {
+        const { dt_txt } = data.list[2];
+        const { icon } = data.list[2].weather[0];
+        const { temp } = data.list[2].main;
+        const { speed } = data.list[2].wind;
+        const { humidity } = data.list[2].main;
+
+        futureDateThree.innerText = dt_txt;
+        futureIconThree.src = iconUrl + icon + ".png";
+        futureTempThree.innerText = temp + "° F";
+        futureWindSpeedThree.innerText = "Wind speed: " + speed + " MPH";
+        futureHumidityThree.innerText = "Humidity: " + humidity + "%";
+    },
+    search: function() {
+        this.fetchFutureWeatherThree(city.value);
+    },    
+};
+
+// Day 4
+let futureWeatherFour = {
+    apiKey: "6a495eb658d2f860658cf774331a385d",
+    fetchFutureWeatherFour: function(city) {
+        fetch(
+            futureApiURL
+            + city
+            + unitsOfMeasure
+            + this.apiKey
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.displayFutureWeatherFour(data);
+            })           
+    },    
+    // Display Future Weather Function
+    displayFutureWeatherFour: function(data) {
+        const { dt_txt } = data.list[3];
+        const { icon } = data.list[3].weather[0];
+        const { temp } = data.list[3].main;
+        const { speed } = data.list[3].wind;
+        const { humidity } = data.list[3].main;
+
+        futureDateFour.innerText = dt_txt;
+        futureIconFour.src = iconUrl + icon + ".png";
+        futureTempFour.innerText = temp + "° F";
+        futureWindSpeedFour.innerText = "Wind speed: " + speed + " MPH";
+        futureHumidityFour.innerText = "Humidity: " + humidity + "%";
+    },
+    search: function() {
+        this.fetchFutureWeatherFour(city.value);
+    },    
+};
+
+
+let futureWeatherFive = {
+    apiKey: "6a495eb658d2f860658cf774331a385d",
+    fetchFutureWeatherFive: function(city) {
+        fetch(
+            futureApiURL
+            + city
+            + unitsOfMeasure
+            + this.apiKey
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                this.displayFutureWeatherFive(data);
+            })           
+    },    
+    // Display Future Weather Function
+    displayFutureWeatherFive: function(data) {
+        const { dt_txt } = data.list[4];
+        const { icon } = data.list[4].weather[0];
+        const { temp } = data.list[4].main;
+        const { speed } = data.list[4].wind;
+        const { humidity } = data.list[4].main;
+
+        futureDateFive.innerText = dt_txt;
+        futureIconFive.src = iconUrl + icon + ".png";
+        futureTempFive.innerText = temp + "° F";
+        futureWindSpeedFive.innerText = "Wind speed: " + speed + " MPH";
+        futureHumidityFive.innerText = "Humidity: " + humidity + "%";
+    },
+    search: function() {
+        this.fetchFutureWeatherFive(city.value);
+    },    
+};
+
+
 
 // Event Listener for Search Button upon Click
 searchBtn.addEventListener("click", function() {
     weather.search();
-    futureWeatherOne.search();
-    futureWeatherTwo.search();
 })
 
 // Event Listener for Search Bar if user hits 'Enter' key
 city.addEventListener("keyup", function(event) {
 if (event.key == "Enter") {
     weather.search();
-    futureWeatherOne.search();
-    futureWeatherTwo.search();
 }
 })
