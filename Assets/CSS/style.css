@@ -29,7 +29,7 @@ h1 {
     color: white;
 }
 
-
+/* Main Container */
 .main-container {
     display: flex;
     flex-direction: row;
@@ -41,11 +41,52 @@ h1 {
     flex-basis: 100%;
 }
 
+/* Search Container */
+.search-container-parent {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
 .search-container {
     display: flex;
     flex-direction: column;
 }
 
+.search-header {
+    font-size: large;
+    font-weight: bolder;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+}
+
+#search-bar {
+    border-radius: 15px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+button {
+    border-radius: 15px;
+    margin-top: 0.5em;
+    cursor: pointer;
+    background-color: rgb(52, 120, 237);
+    color: white;
+}
+
+.past-search-storage {
+    border-top: solid 1px black;
+    margin-top: 2rem;
+}
+
+.past-search-item {
+    background-color: rgb(172, 170, 170);
+    border-radius: 5px;
+    margin: 5px;
+    list-style: none;
+}
+
+/* Weather container */
 .featured-weather {
     display: flex;
     border: solid 1px black;
@@ -71,26 +112,8 @@ h1 {
     color: white;
 }
 
-.search-header {
-    font-size: large;
-    font-weight: bolder;
-    font-style: normal;
-    display: flex;
-    justify-content: center;
-}
-
-#search-bar {
-    border-radius: 15px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-button {
-    border-radius: 15px;
-    margin-top: 0.5em;
-    cursor: pointer;
-    background-color: rgb(52, 120, 237);
-    color: white;
+.five-day-header {
+    padding: 5px;
 }
 
 .uv-index-value {
@@ -102,6 +125,10 @@ button {
     padding-top: 5px;
     padding-bottom: 5px;
     margin-left: 5px;
+}
+
+#uv-index {
+    margin-bottom: 1rem;
 }
 
 .flex {
@@ -118,10 +145,6 @@ button {
     margin: 0.5rem;
 }
 
-#uv-index {
-    margin-bottom: 1rem;
-}
-
 #city {
     font-weight: bolder;
     font-variant: small-caps;
@@ -133,10 +156,6 @@ button {
 
 .weather.loading {
     visibility: hidden;
-}
-
-.five-day-header {
-    padding: 5px;
 }
 
 li {
@@ -163,22 +182,6 @@ li {
     justify-content: flex-start;
 }
 
-.past-search-storage {
-    border-top: solid 1px black;
-    margin-top: 2rem;
-}
-
-.search-container-parent {
-    margin-right: 1rem;
-    margin-left: 1rem;
-}
-
-.past-search-item {
-    background-color: rgb(172, 170, 170);
-    border-radius: 5px;
-    margin: 5px;
-    list-style: none;
-}
 
 @media screen and (max-width: 769px) {
     .five-day-container { 
@@ -217,4 +220,3 @@ li {
         margin-bottom: 1rem;
     }
 };
-
