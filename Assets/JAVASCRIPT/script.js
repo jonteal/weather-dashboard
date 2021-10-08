@@ -191,13 +191,11 @@ let futureWeatherOne = {
         const { speed } = data.list[0].wind;
         const { humidity } = data.list[0].main;
 
-
         futureDateOne.innerText = dt_txt;
         futureIconOne.src = iconUrl + icon + ".png";
         futureTempOne.innerText = temp + "° F";
         futureWindSpeedOne.innerText = "Wind speed: " + speed + " MPH";
         futureHumidityOne.innerText = "Humidity: " + humidity + "%";
-
 
     },
     search: function() {
