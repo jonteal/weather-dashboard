@@ -127,7 +127,7 @@ button {
     margin-left: 5px;
 }
 
-#uv-index {
+#uv-index-value {
     margin-bottom: 1rem;
 }
 
@@ -140,7 +140,8 @@ button {
 #wind,
 #humidity,
 #uv-index,
-#temp {
+#temp,
+#uv-index-value {
     text-transform: capitalize;
     margin: 0.5rem;
 }

@@ -7,6 +7,8 @@ var currentApiURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var unitsOfMeasure = "&units=imperial&appid=";
 var futureApiURL = "https://api.openweathermap.org/data/2.5/forecast?q=";
 var uvIndex = document.getElementById("uv-index-value");
+var lat;
+var lon;
 
 // Variable for Search Button
 var searchBtn = document.getElementById("search-btn");
@@ -80,6 +82,10 @@ let weather = {
         const { icon, description } = data.weather[0];
         const { temp, humidity } = data.main;
         const { speed } = data.wind;
+        lat = data.coord.lat;
+        lon = data.coord.lon;
+        console.log(lat);
+        console.log(lon);
 
 
         // Instructions to populate specific elements with relevant data
@@ -96,7 +102,8 @@ let weather = {
         futureWeatherThree.search()
         futureWeatherFour.search()
         futureWeatherFive.search()
-        uvI.search()
+        uvI.fetchUVI()
+        uvI.displayUVI()
     },
     search: function() {
         this.fetchWeather(document.getElementById("search-bar").value);
@@ -109,24 +116,33 @@ let uvI = {
     apiKey: "6a495eb658d2f860658cf774331a385d",
 
     fetchUVI: function() {
+        console.log("hello");
         fetch(
-            "https://api.openweathermap.org/data/2.5/uvi/forecast?lat="
+            "https://api.openweathermap.org/data/2.5/onecall?lat="
             + lat 
             + "&lon="
             + lon
+            + "&appid="
             + this.apiKey
         )
-            .then((response) => response.json())
+            .then((response) => {
+                console.log(response);
+                return response.json()
+            })
             .then((data) => {
-                this.displayWeather(data);
+                console.log(data);
+                this.displayUVI(data);
             })
     },
 
     displayUVI: function(data) {
         const { uvi } = data.current;
-
-        uvIndex.innerText = uvi;
+        console.log(uvi);
+        uvIndex.innerText = `UV Index: ${uvi}`;
     },
+
+    // https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
 
 //            //Color change depending on UV index
 //         if (data.current.uvi < 2) {
@@ -329,6 +345,8 @@ let futureWeatherFive = {
 // Event Listener for Search Button upon Click
 searchBtn.addEventListener("click", function() {
     weather.search();
+    uvI.fetchUVI();
+    uvI.displayUVI();
 })
 
 // Event Listener for Search Bar if user hits 'Enter' key

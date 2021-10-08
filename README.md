@@ -13,9 +13,6 @@ There is no installation of this application necessary. The user simply needs to
 To use the program, the user will need to enter in the search bar on the left hand side (or top center if on mobile), and search for the city of their choice. Once they hit the 'Search' button, the program will return the weather for that day, including the temperature, a description and icon depicting the conditions, the wind speed, humidity, and the UV Index. They will also get a 5-day forecast below with the date, an icon, the temperature, wind speed, and humidity for each day. Once the user enters a new search, the previous searches will populate in the left hand column in the recent searches section.
 
 
-    ```md
-    ![Screen Shot](./Assets/IMAGES/Screen Shot.png)
-    ```
 
 ## Credits
 The OpenWeather API was used to access the weather data for this program. 
